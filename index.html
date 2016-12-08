@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/pcstore/zs.css">
+</head>
+<body>
+<div class="dask">
+    <div class="alert">
+        发送成功
+    </div>
+</div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+        <img src="img/images/bkup.png" alt="" class="bkup">
+        <img src="img/images/longwen.png" alt="" class="lw">
+        <img src="img/images/bkbottom.png" alt="" class="bkdown">
+        <img src="img/images/hw1.png" alt="" class="hw1">
+        <img src="img/images/hw2.png" alt="" class="hw2">
+            <div class="image1">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="image2">
+            </div>
+        </div>
+        <div class="swiper-slide">
+             <div class="image3">
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="image4">
+                <img src="img/images/tit4.png" alt="" class="title4">
+                <div class="cont">
+                    <div class="tit">
+                        <img src="img/images/tit4-1.png" class="img_tit" alt="">
+                    </div>
+                    <div class="name">
+                        <h6><span>*</span>意向代理区域：</h6>
+                        <h6 class="hi"><span>*</span>企业类型：</h6>
+                        <h6><span>*</span>企业名称：</h6>
+                        <h6><span>*</span>联系人：</h6>
+                        <h6><span>*</span>职位：</h6>
+                        <h6><span>*</span>手机号码：</h6>
+                        <h6><span>*</span>邮箱：</h6>
+                    </div>
+                    <div class="form_cont">
+                        <form class="form-horizontal dlqy" role="form">
+                              <div class="form-group mg0">
+                                <select class=" col-xs-3">
+                                  <option selected="selected"id="procince_id">省</option>
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                                 <select class="col-xs-3">
+                                  <option selected="selected" id="city_id">市</option>
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                                 <select class="col-xs-4">
+                                  <option selected="selected" id="area_id">区/县</option>
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                              </div>
+                              <div class="form-group qylx">
+                                <label class="radio-inline text">
+                                  <input type="radio"  name="inlineRadioOptions" value="1">大型商场
+                                </label>
+                                <label class="radio-inline text">
+                                  <input type="radio"  name="inlineRadioOptions" value="2">连锁企业
+                                </label>
+                                <label class="radio-inline text">
+                                  <input type="radio" name="inlineRadioOptions" value="3">大型市场
+                                </label>
+                                <label class="radio-inline text">
+                                  <input type="radio"  name="inlineRadioOptions" value="4">行业协会
+                                </label>
+                                <label class="radio-inline text">
+                                  <input type="radio"  name="inlineRadioOptions" value="5">当地名企
+                                </label>
+                                <label class="radio-inline text">
+                                  <input type="radio"  name="inlineRadioOptions" value="6">其他
+                                </label>
+                              </div>
+                                      <input type="text" class="inf company_name">
+                                      <input type="text" class="inf conpany_contacts">
+                                      <input type="text" class="inf company_position">
+                                      <input type="text" class="inf company_phone">
+                                      <input type="email" class="inf conpany_mailbox">
+                        </form>
+                    </div>
+                    <img src="img/images/butt1.png" class="butt" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        direction: 'vertical'
+    });
+</script>
+<script>
+var inf={
+    company_type:"",
+    company_name:"",
+    conpany_contacts:"",
+    company_position:"",
+    company_phone:"",
+    conpany_mailbox:""
+}
+
+    $(".dask").click(function(){
+            $(".dask").css({"display":"none"})
+        })
+    $(".text input").click(function(){
+        inf.company_type=this.value
+    })
+    $(".inf").blur(function(){
+       
+        var aa=$(this).prop("className").substring(4)
+       console.log(inf[aa])      
+       inf[aa]=this.value    
+    })
+    $(".butt").click(function(){
+        // var aa=JSON.stringify(inf);    //字符
+        var aa=inf       //键值对
+        $.ajax(
+            url:"",
+            type: "POST",
+            data:aa,
+            success:function(){
+                $(".dask").css({"display":"block"})
+            }
+        )
+                
+    })
+</script>
+</body>
+</html>
